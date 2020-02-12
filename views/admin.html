@@ -1,0 +1,321 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Login | feed India</title>
+    <link rel="shortcut icon" href="assets/logo.PNG" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Grenze|Quicksand|Ubuntu|Hepta+Slab&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("assets/login.jpg");
+        }
+        
+        #container {
+            position: absolute;
+            height: auto;
+            width: 80%;
+            left: 10%;
+            top: 27%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid transparent;
+            border-radius: 0px;
+            text-align: center;
+            margin-bottom: 6%;
+        }
+        
+        #form {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        input {
+            padding: 10px;
+            font-size: 20px;
+            margin: 10px 10px;
+            width: 80%;
+            outline: 0;
+            border: 0px transparent;
+            border-radius: 10px;
+            font-family: "Ubuntu";
+        }
+        
+        #logo {
+            margin-top: 5px;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-family: "Ubuntu";
+        }
+        
+        input[type="submit"] {
+            margin-top: 25px;
+        }
+        
+        input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+        
+        #menu {
+            position: absolute;
+            width: 70%;
+            top: 14%;
+            left: 15%;
+            text-align: center;
+        }
+        
+        .b {
+            width: 30%;
+            padding: 8px;
+            font-family: 'Ubuntu';
+            outline: none;
+            margin: 4px;
+            border-radius: 4px;
+            font-size: 17px;
+            border: 0px solid transparent;
+        }
+        
+        #food,
+        #feedback,
+        #money {
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+        
+        thead {
+            font-family: 'Hepta Slab';
+            font-size: 20px;
+        }
+        
+        tbody {
+            font-family: 'Ubuntu';
+        }
+        
+        th {
+            padding: 10px;
+        }
+        
+        td {
+            padding: 6px;
+        }
+        
+        th,
+        td {
+            text-align: center;
+            border: 1px solid black;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+        }
+        
+        ul {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img style="height:100%;width:16%" src="assets/logo.png">
+        <ul id="head_ul">
+            <a href="/index">
+                <li class="head_li">Home</li>
+            </a>
+            <a href="/about">
+                <li class="head_li">About us</li>
+            </a>
+            <a href="/donate">
+                <li class="head_li">Donate</li>
+            </a>
+            <a href="/articles">
+                <li class="head_li">Articles</li>
+            </a>
+            <a href="/contact">
+                <li class="head_li">Contact us</li>
+            </a>
+            <a href="/login">
+                <li class="head_li" style="background:white;color:black;">Logout</li>
+            </a>
+        </ul>
+    </header>
+    <div id="menu"><button class="b" style="background: #25a44d;color:white">Money Donation</button><button class="b" style="background: rgb(255, 255, 255);">Food Donation</button><button class="b" style="background: rgb(255, 255, 255);">Feedback</button></div>
+    <div id="container">
+        <div id="money">
+            <table id="money_table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Donation Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% money.forEach(function(x){ %>
+                        <tr>
+                            <td>
+                                <%=x.first_name%>
+                            </td>
+
+                            <td>
+                                <%=x.company%>
+                            </td>
+                            <td>
+                                <%=x.email%>
+                            </td>
+                            <td>
+                                <%=x.mobile%>
+
+                            </td>
+                            <td>
+                                <%=x.city%>,
+                                    <%=x.zip%>,
+                                        <%=x.state%>,
+                                            <%=x.country%>
+                            </td>
+                            <td>
+                                ₹
+                                <%=x.amount%>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                </tbody>
+            </table>
+        </div>
+        <div id="food" style="display: none;">
+            <table id="food_table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type of food</th>
+                        <th>Quantity</th>
+                        <th>Pickup Location</th>
+                        <th>Pickup Time</th>
+                        <th>Contact Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% food.forEach(function(x){ %>
+                        <tr>
+                            <td>
+                                <%=x.name%>
+                            </td>
+                            <td>
+                                <ul>
+                                    <% x.food.forEach(function(y){ %>
+                                        <li>
+                                            <%= y.type %>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <% x.food.forEach(function(y){ %>
+                                        <li>
+                                            <%= y.qty %>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                            </td>
+
+                            <td>
+                                <%=x.location%>
+                            </td>
+                            <td>
+                                <%=x.date%>
+                                    <%=x.time%>
+                            </td>
+                            <td>
+                                <%=x.number%>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                </tbody>
+            </table>
+        </div>
+        <div id="feedback" style="display: none;">
+            <table id="feed_table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Suggestions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% feedback.forEach(function(x){ %>
+                        <tr>
+                            <td>
+                                <%=x.first_name%>
+                            </td>
+                            <td>
+                                <%=x.email%>
+                            </td>
+                            <td>
+                                <%=x.suggestions%>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <div style="display: inline;">
+            <span style="padding-top:15px;padding-left:15px;float: left;">Feed India © 2019 Website Designed & Maintenance By SR Techies</span>
+            <div style="display: inline;float:right;margin-right: 30px;">
+                <a href="https://www.facebook.com/unitednations/" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/UN?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="fa fa-twitter"></a>
+                <a href="https://in.linkedin.com/company/united-nations" class="fa fa-linkedin"></a>
+                <a href="https://www.instagram.com/unitednations" class="fa fa-instagram"></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        //////////////<%=//Sparsh Jain %>        //////////////
+
+        $('.b').click(function() {
+            $('.b').css({
+                "background": "rgb(255, 255, 255)",
+                "color": "black"
+            })
+            console.log($(this).text());
+            if ($(this).text() == 'Money Donation') {
+                $('#money').show();
+                $('#feedback').hide();
+                $('#food').hide();
+            }
+            if ($(this).text() == 'Food Donation') {
+                $('#money').hide();
+                $('#feedback').hide();
+                $('#food').show();
+            }
+            if ($(this).text() == 'Feedback') {
+                $('#money').hide();
+                $('#feedback').show();
+                $('#food').hide();
+            }
+            $(this).css({
+                "background": "rgb(37, 164, 77)",
+                "color": "rgb(255, 255, 255)"
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Donate | feed India</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+    <link rel="shortcut icon" href="assets/logo.PNG" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Grenze|Quicksand|Ubuntu|Hepta+Slab&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("assets/login.jpg");
+        }
+        
+        #container {
+            position: absolute;
+            z-index: 1;
+            height: auto;
+            width: 35%;
+            left: 32.5%;
+            top: 16%;
+            margin-bottom: 100px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid transparent;
+            border-radius: 10px;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        
+        #form {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        input[type="text"],
+        input[type="email"] {
+            padding: 7px 10px;
+            font-size: 20px;
+            margin: 10px 10px;
+            width: 80%;
+            outline: 0;
+            border: 0px transparent;
+            border-radius: 10px;
+            font-family: "Ubuntu";
+        }
+        
+        #logo {
+            margin-top: 5px;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-family: "Ubuntu";
+        }
+        
+        input[type="submit"] {
+            margin-top: 25px;
+            padding: 10px;
+            font-size: 20px;
+            margin: 22px 10px 10px 10px;
+            width: 80%;
+            outline: 0;
+            border: 0px transparent;
+            border-radius: 10px;
+            font-family: "Ubuntu";
+        }
+        
+        input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+        
+        h2 {
+            font-family: 'Hepta Slab', serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            font-size: 200%;
+        }
+        
+        .ng-invalid .ng-touched {
+            border: 1px solid red;
+        }
+        
+        .ng-dirty .ng-valid {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img style="height:100%;width:16%" src="assets/logo.png">
+        <ul id="head_ul">
+            <a href="/index">
+                <li class="head_li">Home</li>
+            </a>
+            <a href="/about">
+                <li class="head_li">About us</li>
+            </a>
+            <a href="/donate">
+                <li class="head_li" style="background:white;color:black;">Donate</li>
+            </a>
+            <a href="/articles">
+                <li class="head_li">Articles</li>
+            </a>
+            <a href="/contact">
+                <li class="head_li">Contact us</li>
+            </a>
+            <a href="/login">
+                <li class="head_li">Login</li>
+            </a>
+        </ul>
+    </header>
+    <div id="container" ng-app="">
+        <div id="form" onsubmit="return sub()">
+            <form action="/donate" method="POST">
+                <!-- <img id="logo" src="login_logo.png"> -->
+                <h2>Donation Form</h2>
+                <div style="display: inline;margin:10px 10px">
+                    <input type="text" style="width:37%" ng-model="first_namename" required name="user[first_name]" placeholder="First Name">
+                    <input type="text" style="width:37%" required ng-model="last_name" name="user[last_name]" placeholder="Last Name"><br>
+                </div>
+                <input type="text" ng-model="mobile" name="user[mobile]" id="mob" onkeyup="validate()" placeholder="Mobile" ng-pattern="/^[0-9]{10}$/" required><br>
+
+                <input type="text" name="user[address]" id="" ng-model="address" required placeholder="Address">
+                <div style="display: inline;margin:10px 10px">
+                    <input type="text" style="width:23%" required ng-model="city" name="user[city]" id="" placeholder="City">
+                    <input type="text" style="width:23%" required ng-model="state" name="user[state]" id="" placeholder="State">
+                    <input type="text" style="width:23%" required ng-model="zip" ng-pattern="/^[0-9]{6}$/" id="zip" name="user[zip]" placeholder="Zip">
+                </div>
+                <input type="text" name="user[country]" required ng-model="country" id="" placeholder="Country">
+                <div style="display: inline;margin:10px 10px">
+                    <input type="text" style="width:37%" required name="user[company]" ng-model="com" placeholder="Company">
+                    <input type="email" style="width:37%" required onkeyup="validate()" ng-model="email" id="mail" name="user[email]" placeholder="Email"><br>
+                </div>
+                <input type="text" name="user[amount]" id="amt" onkeyup="validate()" ng-model="amount" required placeholder="Amount"><br>
+                <input type="checkbox" style="margin-left:0px" required name="" id=""> I accept the <span style="color:rgb(33, 112, 214)">Terms Of Use</span> and <span style="color:rgb(33, 112, 214)">Privacy Policy</span>.
+
+                <p id="error" style="display:none;font-size:15px;text-align:center;color:red;"></p>
+                <input type="submit" value="Donate Now" style="color:white;background:#25a44d;">
+                <!-- <p>Already have an account? <span><a href="login.html">Login</a></span></p> -->
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div style="display: inline;">
+
+            <span style="padding-top:15px;padding-left:15px;float: left;">Feed India © 2019 Website Designed &
+                Maintenance By SR Techies</span>
+            <div style="display: inline;float:right;margin-right: 30px;">
+                <a href="https://www.facebook.com/unitednations/" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/UN?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="fa fa-twitter"></a>
+                <a href="https://in.linkedin.com/company/united-nations" class="fa fa-linkedin"></a>
+                <a href="https://www.instagram.com/unitednations" class="fa fa-instagram"></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function validate() {}
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<html>
+
+<body>
+    <h2 role="alert">Your form could not be submitted because of 3 validation errors.</h2>
+    <script>
+        let myAlert = document.createElement("p");
+        myAlert.setAttribute("role", "alert");
+        let myAlertText = document.createTextNode("You must agree with our terms of service to create an account.");
+        myAlert.appendChild(myAlertText);
+        document.body.appendChild(myAlert);
+    </script>
+</body>
+
+</html>

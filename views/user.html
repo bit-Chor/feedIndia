@@ -1,0 +1,221 @@
+<html>
+
+<head>
+    <title>Donate | feed India</title>
+    <link rel="shortcut icon" href="assets/logo.PNG" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Grenze|Quicksand|Ubuntu|Hepta+Slab&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("assets/login.jpg");
+        }
+        
+        #container {
+            position: absolute;
+            height: auto;
+            width: 60%;
+            left: 20%;
+            top: 16%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid transparent;
+            border-radius: 10px;
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 80px;
+        }
+        
+        #form {
+            width: 100%;
+            height: 100%;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            padding: 7px 10px;
+            font-size: 20px;
+            margin: 10px 10px;
+            width: 80%;
+            outline: 0;
+            border: 0px transparent;
+            border-radius: 10px;
+            font-family: "Ubuntu";
+            text-align: left;
+        }
+        
+        input[type="text"]:hover,
+        input[type="date"]:hover {
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+        
+        #logo {
+            margin-top: 5px;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-family: "Ubuntu";
+        }
+        
+        input[type="submit"] {
+            margin-top: 25px;
+            padding: 10px;
+            color: ste font-size: 20px;
+            margin: 22px 10px 10px 10px;
+            width: 80%;
+            outline: 0;
+            border: 0px transparent;
+            border-radius: 10px;
+            font-family: "Ubuntu";
+        }
+        
+        input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+        
+        h2 {
+            font-family: 'Hepta Slab', serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            font-size: 200%;
+        }
+        
+        .del,
+        .more {
+            width: 12%;
+            height: 34px;
+            padding: 5px;
+            font-family: 'Ubuntu';
+            outline: none;
+            margin: 4px;
+            border-radius: 10px;
+            border: 0px solid transparent;
+        }
+        
+        .more {
+            padding: 8px 13px;
+            width: 14%;
+        }
+        
+        .more:hover,
+        .del:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img style="height:100%;width:14%" src="assets/logo.png">
+        <ul id="head_ul">
+            <a href="/index">
+                <li class="head_li">Home</li>
+            </a>
+            <a href="/about">
+                <li class="head_li">About us</li>
+            </a>
+            <a href="/donate">
+                <li class="head_li">Donate</li>
+            </a>
+            <a href="/articles">
+                <li class="head_li">Articles</li>
+            </a>
+            <a href="/contact">
+                <li class="head_li">Contact us</li>
+            </a>
+            <a href="/login">
+                <li class="head_li" style="background:white;color:black;">Logout</li>
+            </a>
+        </ul>
+    </header>
+    <div id="container">
+        <div id="form" onsubmit="return sub()">
+            <form action="/user/food" method="POST">
+                <h2>What do you want to donate ?</h2>
+
+                <input type="text" name="name" placeholder="Name" required><br>
+                <div id="food" style="text-align: left;margin-left: 55px;">
+
+                    <div style="display: inline;margin:12px 12px" class="items">
+                        <input type="text" name="food[0][type]" required style="width:45%" placeholder="Type of Food">
+                        <input type="number" min="1" name="food[0][qty]" required style="width:17%" placeholder="Qty">
+                        <span style="width: 10%;" id=""><a class="more" style="background: #25a44d;color:white"> + More</a></span>
+                    </div>
+                </div>
+                <input type="text" name="location" required placeholder="Pickup Location"><br>
+                <input type="date" name="date" id="" required placeholder="Pickup Date"><br>
+
+                <input type="text" name="time" id="" required placeholder="Pickup Time"><br>
+                <input type="text" name="number" id="mob" onkeyup="validate()" required placeholder="Contact Number"><br>
+
+                <input type="checkbox" style="margin-left:0px" required name="" id=""> I accept the <span style="color:rgb(33, 112, 214)">Terms Of Use</span> and <span style="color:rgb(33, 112, 214)">Privacy Policy</span>.
+
+                <p id="error" style="display:none;font-size:15px;text-align:center;color:red;"></p>
+                <input type="submit" value="Submit" style="color:white;background:#25a44d;">
+
+
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div style="display: inline;">
+
+            <span style="padding-top:15px;padding-left:15px;float: left;">Feed India © 2019 Website Designed & Maintenance By SR Techies</span>
+            <div style="display: inline;float:right;margin-right: 30px;">
+                <a href="https://www.facebook.com/unitednations/" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/UN?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="fa fa-twitter"></a>
+                <a href="https://in.linkedin.com/company/united-nations" class="fa fa-linkedin"></a>
+                <a href="https://www.instagram.com/unitednations" class="fa fa-instagram"></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        var cnt = 0;
+        $('.more').click(function() {
+            cnt++;
+            var x = String(cnt);
+            console.log(x);
+            var txt = "<div style='display:inline;margin:12px 12px' class='items'><input type = 'text' name='food[" + x + "][type]'  style = 'width:45%' placeholder = 'Type of Food' > <input type = 'number' min='1' style = 'width:17%' name='food[" + (x) + "][qty]' placeholder = 'Qty'> <span style='width: 10%;'><button class='del' style='color:white;background:red;' onclick=''>Delete</button></span></div>"
+            $('#food').append(txt);
+        });
+        $("#food").on("click", "span", function() {
+            if ($(this).text() == 'Delete') {
+                $(this).parent().remove();
+                cnt--;
+            }
+        });
+        var v1 = document.getElementById("mob");
+        var f1 = false;
+
+        function validate() {
+            if (v1.matches(":focus") && /^[0-9]{10}$/.test(v1.value)) {
+                v1.style.border = "1px solid green";
+                f1 = true;
+            } else if (v1.matches(":focus") && /^[0-9]{10}$/.test(v1.value) == false) {
+                v1.style.border = "1px solid red";
+                f1 = false;
+            }
+            v1.addEventListener("blur", function() {
+                v1.style.border = "1px solid transparent";
+            });
+        }
+
+        function sub() {
+            var err = document.getElementById("error");
+            if (f1 == false) {
+                v1.style.border = "1px solid red";
+                err.style.display = "block";
+                err.innerHTML = "*enter a valid mobile number(only 10 digits)";
+                return false;
+            } else
+                return true;
+        }
+    </script>
+</body>
+
+</html>
